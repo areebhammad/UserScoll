@@ -12,7 +12,7 @@ const controller = new ScrollMagic.Controller();
 
 //Scene
 let scene = new ScrollMagic.Scene({
-    duration: 15000,
+    duration: 20000,
     triggerElement: intro,
     triggerHook: 0 
 })
@@ -43,38 +43,15 @@ let scene2 = new ScrollMagic.Scene({
 let accelAmount = 0.1;
 let scrollPosition = 0;
 let delay = 0;
-let Sc = ScrollMagic.scrollPos;
 
 scene.on("update",  (event) => {    //scrollPos is coming from ScrollMagic
     scrollPosition = event.scrollPos / 1000;
-    //console.log(event);
-    
-    
-    setInterval(() => {
-        delay += (scrollPosition - delay) * accelAmount;
-        //console.log(scrollPosition, delay)
-        video.currentTime = delay;
-    },41.7)
-    
+    //console.log(event);    
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//1000/24 = 41.666666667 fps
-//setInterval(() => {
-//    delay += (Sc - delay) * accelAmount;
-//   //console.log(scrollPosition, delay);
-////
-//    video.currentTime = delay;
-//},23.98);
+setInterval(() => {
+    //delay = scrollPosition * accelAmount / (1+accelAmount);
+    delay += ( scrollPosition - delay) *accelAmount;
+    //console.log(scrollPosition, delay)
+    video.currentTime = delay ;
+},200);
